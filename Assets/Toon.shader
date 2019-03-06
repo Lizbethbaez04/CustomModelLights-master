@@ -35,5 +35,23 @@
 				o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Albedo.rgb;
 			}
 		ENDCG
+
+			Pass
+			{
+				CGPROGRAM
+				#pragma vertex vert
+				#pragma fragment frag
+
+				#include "UnityCG.cginc"
+
+				struct appdata
+				{
+					float4 vertex : POSITION;
+					float2 uv : TEXCORD0;
+					//Cuando se declara una noramla, se refiere a la normal de los vértices para saber dónde pintar
+					float3 normal : NORMAL;
+				};
+				ENDCG
+			};
 	}
 }
